@@ -53,23 +53,24 @@
 
     group.translate(30, 50);
 
-    var opacityChange = function(element){
-      element.animate({opacity: .6});
+    function opacityDown(elem){
+      elem.animate({opacity: .2}, 2000, opacityRecover);
     };
 
-    var opacityRecover = function(element){
-      element.animate({opacity: 1});
+    function opacityRecover(){
+      this.animate({opacity: .8}, 2000, opacityDown);
     };
 
-    poly1.dblclick(function(){beat1.play();opacityChange(this);});
-    poly2.dblclick(function(){beat2.play();opacityChange(this);});
-    poly3.dblclick(function(){beat3.play();opacityChange(this);});
-    poly4.dblclick(function(){beat4.play();opacityChange(this);});
-    poly5.dblclick(function(){beat5.play();opacityChange(this);});
-    poly6.dblclick(function(){beat6.play();opacityChange(this);});
-    poly7.dblclick(function(){beat7.play();opacityChange(this);});
-    poly8.dblclick(function(){beat8.play();opacityChange(this);});
-    poly9.dblclick(function(){beat9.play();opacityChange(this);});
+
+    poly1.dblclick(function(){beat1.play();opacityDown(this);});
+    poly2.dblclick(function(){beat2.play();opacityDown(this);});
+    poly3.dblclick(function(){beat3.play();opacityDown(this);});
+    poly4.dblclick(function(){beat4.play();opacityDown(this);});
+    poly5.dblclick(function(){beat5.play();opacityDown(this);});
+    poly6.dblclick(function(){beat6.play();opacityDown(this);});
+    poly7.dblclick(function(){beat7.play();opacityDown(this);});
+    poly8.dblclick(function(){beat8.play();opacityDown(this);});
+    poly9.dblclick(function(){beat9.play();opacityDown(this);});
 
     poly1.click(function(){beat1.stop();opacityRecover(this);});
     poly2.click(function(){beat2.stop();opacityRecover(this)});
