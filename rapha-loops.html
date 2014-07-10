@@ -64,9 +64,13 @@
                 setTimeout(runloop(pol));
             }
           );
+      pol.click(function(){
+        this.pause();
+        this.attr({opacity: 1});
+      });
     };
 
-  
+
 
     poly1.dblclick(function(){beat1.play();runloop(this);});
     poly2.dblclick(function(){beat2.play();runloop(this);});
