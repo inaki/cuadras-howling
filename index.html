@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <title>pattern for two.js</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/howler/1.1.17/howler.min.js"></script>
+    <!-- this is just some css code. -->
+    <style>
+
+    body {
+      background-color: #ccc;
+    }
+    #stage-canvas {
+      max-width: 500px;
+      height: 600px;
+      margin: 0 auto;
+    }
+
+    </style>
+  </head>
+  <body>
+
+  <div id="stage-canvas"></div>
+
+
+  <script>
+
+    var beat1 = new Howl({urls: ['beats/beatA.wav'],loop: true,volume: 0.5,});
+    var beat2 = new Howl({urls: ['beats/beatB.wav'],loop: true,volume: 0.5,});
+    var beat3 = new Howl({urls: ['beats/beatC.wav'],loop: true,volume: 0.5,});
+    var beat4 = new Howl({urls: ['beats/beatD.wav'],loop: true,volume: 0.5,});
+    var beat5 = new Howl({urls: ['beats/beatE.wav'],loop: true,volume: 0.5,});
+    var beat6 = new Howl({urls: ['beats/beatF.wav'],loop: true,volume: 0.5,});
+    var beat7 = new Howl({urls: ['beats/beatG.wav'],loop: true,volume: 0.5,});
+    var beat8 = new Howl({urls: ['beats/beatH.wav'],loop: true,volume: 0.5,});
+    var beat9 = new Howl({urls: ['beats/beatI.wav'],loop: true,volume: 0.5,});
+
+    window.onload = function(){
+    var paper = new Raphael(document.getElementById('stage-canvas'), 500, 500);
+
+    var poly1 = paper.path(['M', 0, 66, 130, 0, 320, 69, 320,120, 258, 99, 192, 130]).attr({fill: '#2197C6'});
+    var poly2 = paper.path(['M', 258, 99, 258, 259, 192, 290, 192, 130]).attr({fill: '#3F4465'});
+    var poly3 = paper.path(['M', 258, 99, 445, 162, 319, 226, 258, 206]).attr({fill: '#9990AD'});
+    var poly4 = paper.path(['M', 319, 226,445, 162, 445, 323, 319, 279]).attr({fill: '#BDB6C8'});
+    var poly5 = paper.path(['M', 319, 226, 319, 279, 258, 259, 258, 206]).attr({fill: '#030303'});
+    var poly6 = paper.path(['M', 445, 323, 317, 385, 127, 323, 127, 270, 192, 290, 258, 259]).attr({fill: '#65628D'});
+    var poly7 = paper.path(['M', 192, 290, 0, 229, 127, 163, 192, 182]).attr({fill: '#FE4603'});
+    var poly8 = paper.path(['M', 127, 109, 192, 130, 192, 182, 127, 163]).attr({fill: '#8c0815'});
+    var poly9 = paper.path(['M', 0, 66, 127, 109, 127, 163, 0, 229, 0, 66]).attr({fill: '#DA4203'});
+
+    var group = paper.set(poly1, poly2, poly3, poly4,poly5, poly6, poly7, poly8, poly9);
+
+    group.translate(30, 50);
+
+
+
+    var runloop = function(pol) {
+
+      pol.animate({opacity: .4},
+          1000,
+          function() {
+                this.attr({opacity: .7}); // Reset
+                setTimeout(runloop(pol));
+            }
+          );
+      pol.click(function(){
+        this.pause();
+        this.attr({opacity: 1});
+      });
+    };
+
+
+
+    poly1.dblclick(function(){beat1.play();runloop(this);});
+    poly2.dblclick(function(){beat2.play();runloop(this);});
+    poly3.dblclick(function(){beat3.play();runloop(this);});
+    poly4.dblclick(function(){beat4.play();runloop(this);});
+    poly5.dblclick(function(){beat5.play();runloop(this);});
+    poly6.dblclick(function(){beat6.play();runloop(this);});
+    poly7.dblclick(function(){beat7.play();runloop(this);});
+    poly8.dblclick(function(){beat8.play();runloop(this);});
+    poly9.dblclick(function(){beat9.play();runloop(this);});
+
+    poly1.click(function(){beat1.stop();});
+    poly2.click(function(){beat2.stop();});
+    poly3.click(function(){beat3.stop();});
+    poly4.click(function(){beat4.stop();});
+    poly5.click(function(){beat5.stop();});
+    poly6.click(function(){beat6.stop();});
+    poly7.click(function(){beat7.stop();});
+    poly8.click(function(){beat8.stop();});
+    poly9.click(function(){beat9.stop();});
+
+
+
+  }
+
+
+
+
+
+
+  </script>
+
+  </body>
+</html>
